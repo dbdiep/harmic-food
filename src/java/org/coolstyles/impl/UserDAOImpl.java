@@ -58,12 +58,12 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public boolean delete(User user) {
+    public boolean delete(int userId) {
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
             String sql = "DELETE FROM USERS WHERE ID=?";            
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, user.getId());
+            stmt.setInt(1, userId);
             stmt.execute();
         } catch (SQLException ex) {
             return false;

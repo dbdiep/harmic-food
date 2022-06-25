@@ -30,13 +30,15 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     public boolean insert(OrderDetail orderDetail) {
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
-            String sql = "INSERT INTO ORDERDETAIL VALUES(null,?,?,?)";            
+            String sql = "INSERT INTO ORDER_DETAILS VALUES(null,?,?,?,?)";            
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, orderDetail.getProductId());
-            stmt.setInt(2, orderDetail.getQuantity());
-            stmt.setString(3, orderDetail.getOrderName());
+            stmt.setString(1, orderDetail.getOrderName());
+            stmt.setInt(2, orderDetail.getOrderId());
+            stmt.setInt(3, orderDetail.getProductId());
+            stmt.setInt(4, orderDetail.getAmount());
             stmt.execute();
         } catch (SQLException ex) {
+            Logger.getLogger("OrderDetailDAO").info(ex.toString());
             return false;
         }
         return true;
@@ -46,10 +48,10 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     public boolean update(OrderDetail orderDetail) {
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
-            String sql = "UPDATE ORDERDETAIL SET PRODUCTID=?, QUANTITY=?, ORDERS_NAME=? WHERE ID=?";            
+            String sql = "UPDATE ORDER_DETAILS SET PRODUCTS_ID=?, AMOUNT=?, ORDERS_NAME=? WHERE ID=?";            
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, orderDetail.getProductId());
-            stmt.setInt(2, orderDetail.getQuantity());
+            stmt.setInt(2, orderDetail.getAmount());
             stmt.setString(3, orderDetail.getOrderName());
             stmt.setInt(4, orderDetail.getId());
             stmt.execute();
@@ -63,7 +65,7 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     public boolean delete(OrderDetail orderDetail) {
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
-            String sql = "DELETE FROM ORDERDETAIL WHERE ID=?";            
+            String sql = "DELETE FROM ORDER_DETAILS WHERE ID=?";            
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, orderDetail.getId());
             stmt.execute();
@@ -79,13 +81,14 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM ORDERDETAIL");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM ORDER_DETAILS");
             while(rs.next()){
                 int id = rs.getInt("id");
-                int productId = rs.getInt("productId");
-                int quantity = rs.getInt("quantity");
+                int productId = rs.getInt("product_id");
+                int amount = rs.getInt("amount");
                 String orderName = rs.getString("orders_name");
-                orderDetailList.add(new OrderDetail(id, productId, quantity, orderName));
+                int orderId = rs.getInt("orders_id");
+                orderDetailList.add(new OrderDetail(id, orderName, orderId, productId, amount));
             }
         } catch (SQLException ex) {
             Logger.getLogger(CRUDServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,17 +100,17 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     public OrderDetail find(int id) {
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
-            String sql = "SELECT * FROM ORDERDETAIL WHERE ID=? LIMIT 1";
+            String sql = "SELECT * FROM ORDER_DETAILS WHERE ID=? LIMIT 1";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
-                int productId = rs.getInt("productId");
-                int quantity = rs.getInt("quantity");
+                int productId = rs.getInt("product_id");
+                int amount = rs.getInt("amount");
                 String orderName = rs.getString("orders_name");
-                
-                return new OrderDetail(id, productId, quantity, orderName);
+                int orderId = rs.getInt("orders_id");
+                return new OrderDetail(id, orderName, orderId, productId, amount);
             }
         } catch (SQLException ex) {
             return null;
@@ -120,7 +123,7 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
         List<OrderDetail> orderDetailList = new ArrayList<>();
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
-            String sql = "SELECT * FROM ORDERDETAIL WHERE ?=?";
+            String sql = "SELECT * FROM ORDER_DETAILS WHERE ?=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, column);
             stmt.setString(2, value.toString());
@@ -128,11 +131,11 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 int id = rs.getInt("id");
-                int productId = rs.getInt("productId");
-                int quantity = rs.getInt("quantity");
+                int productId = rs.getInt("product_id");
+                int amount = rs.getInt("amount");
                 String orderName = rs.getString("orders_name");
-                
-                orderDetailList.add(new OrderDetail(id, productId, quantity, orderName));
+                int orderId = rs.getInt("orders_id");
+                orderDetailList.add(new OrderDetail(id, orderName, orderId, productId, amount));
             }
         } catch (SQLException ex) {
             Logger.getLogger(CRUDServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -141,3 +144,6 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     }
     
 }
+
+
+

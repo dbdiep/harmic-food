@@ -56,12 +56,12 @@ public class CategoryDAOImpl implements CategoryDAO {
     }
 
     @Override
-    public boolean delete(Category category) {
+    public boolean delete(int categoryId) {
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
             String sql = "DELETE FROM CATEGORIES WHERE ID=?";            
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, category.getId());
+            stmt.setInt(1, categoryId);
             stmt.execute();
         } catch (SQLException ex) {
             return false;

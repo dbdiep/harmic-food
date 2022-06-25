@@ -9,10 +9,10 @@ package org.coolstyles.model;
  * @author Admin
  */
 public class User {
-    public static final int ID = 1;
-    public static final int USERNAME = 2;
-    public static final int PASSWORD = 3;
-    public static final int ROLE = 4;
+    
+    public static final String ROLE_ADMIN = "admin";
+    public static final String ROLE_USER = "user";
+    
     public int id;
     public String username;
     public String password;

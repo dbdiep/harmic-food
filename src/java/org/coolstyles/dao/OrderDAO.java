@@ -13,7 +13,7 @@ import org.coolstyles.model.Order;
  * @author Admin
  */
 public interface OrderDAO {
-    public boolean insert(Order order);
+    public Order insert(Order order);
     public boolean update(Order order);
     public boolean delete(Order order);
     

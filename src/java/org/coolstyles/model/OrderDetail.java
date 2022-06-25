@@ -10,15 +10,17 @@ package org.coolstyles.model;
  */
 public class OrderDetail {
     private int id;
-    private int productId;
-    private int quantity;
     private String orderName;
+    private int orderId;
+    private int productId;
+    private int amount;
 
-    public OrderDetail(int id, int productId, int quantity, String orderName) {
+    public OrderDetail(int id, String orderName, int orderId, int productId, int amount) {
         this.id = id;
-        this.productId = productId;
-        this.quantity = quantity;
         this.orderName = orderName;
+        this.orderId = orderId;
+        this.productId = productId;
+        this.amount = amount;
     }
 
     public int getId() {
@@ -29,6 +31,22 @@ public class OrderDetail {
         this.id = id;
     }
 
+    public String getOrderName() {
+        return orderName;
+    }
+
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
     public int getProductId() {
         return productId;
     }
@@ -37,20 +55,13 @@ public class OrderDetail {
         this.productId = productId;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
-    public String getOrderName() {
-        return orderName;
-    }
-
-    public void setOrderName(String orderName) {
-        this.orderName = orderName;
-    }
 
 }

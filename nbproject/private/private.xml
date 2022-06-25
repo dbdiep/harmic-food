@@ -3,32 +3,56 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/admin/DashboardServlet.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/dao/ProductDAO.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/admin/categories/index.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/admin/category/CreateCategoryServlet.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/CheckOutServlet.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/css/style.css</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/HomeServlet.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/CRUDServlet.java</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/product-detail.jsp</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/DemoServlet.java</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/LogoutServlet.java</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/impl/OrderDetailDAOImpl.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/admin/category/DeleteCategoryServlet.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/dao/CategoryDAO.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/admin/users/edit.jsp</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/dao/UserDAO.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/model/Product.java</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/model/Order.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/ProductDetail.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/admin/users/index.jsp</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/META-INF/context.xml</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/impl/OrderDetailSessionDAOImpl.java</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/SearchServlet.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/CartServlet.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/SignUpServlet.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/search.jsp</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/login.jsp</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/model/OrderDetail.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/dao/OrderDetailSessionDAO.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/admin/users/create.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/admin/category/EditCategoryServlet.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/utils/URLSite.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/model/OrderDetailSession.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/model/User.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/admin/index.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/admin/include/navbar.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/admin/user/CreateUserServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/admin/user/EditUserServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/admin/categories/create.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/admin/include/sidebar.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/dao/OrderDAO.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/admin/user/IndexUserServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/HomeServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/product-detail.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/dao/OrderDetailDAO.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/LogoutServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/impl/OrderDetailDAOImpl.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/model/Order.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/OrderServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/admin/categories/edit.jsp</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/impl/OrderDetailSessionDAOImpl.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/SearchServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/LoginServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/model/OrderDetail.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/admin/user/DeleteUserServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/admin/category/IndexCategoryServlet.java</file>
+            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/model/Category.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/impl/OrderDAOImpl.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/src/java/org/coolstyles/impl/ProductDAOImpl.java</file>
             <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/WebApplication/web/category.jsp</file>

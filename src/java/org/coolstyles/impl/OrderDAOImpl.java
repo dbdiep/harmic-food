@@ -26,26 +26,39 @@ import org.coolstyles.model.Order;
 public class OrderDAOImpl implements OrderDAO {
     
     @Override
-    public boolean insert(Order order) {
+    public Order insert(Order order) {
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
-            String sql = "INSERT INTO ORDER VALUES(null,?,?,?)";            
+            String sql = "INSERT INTO ORDERS VALUES(null,?,?,?)";            
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, order.getName());
             stmt.setString(2, order.getDescription());
             stmt.setString(3, order.getStatus());
             stmt.execute();
+            
+            String sqlOrder = "SELECT * FROM ORDERS WHERE ORDERS_NAME=? LIMIT 1";
+            PreparedStatement stmtOrder = conn.prepareStatement(sqlOrder);
+            ResultSet rs = stmtOrder.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                String status = rs.getString("status");
+                
+                return new Order(id, name, description, status);
+            }
         } catch (SQLException ex) {
-            return false;
+            Logger.getLogger("OrderDAO").info(ex.toString());
+            return null;
         }
-        return true;
+        return null;
     }
 
     @Override
     public boolean update(Order order) {
       Connection conn = MySQLDriver.getInstance().getConnection();
         try {
-            String sql = "UPDATE ORDER SET NAME=?, DESCRIPTION=?, STATUS=? WHERE ID=?";            
+            String sql = "UPDATE ORDERS SET NAME=?, DESCRIPTION=?, STATUS=? WHERE ID=?";            
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, order.getName());
             stmt.setString(2, order.getDescription());
@@ -62,7 +75,7 @@ public class OrderDAOImpl implements OrderDAO {
     public boolean delete(Order order) {
        Connection conn = MySQLDriver.getInstance().getConnection();
         try {
-            String sql = "DELETE FROM ORDER WHERE ID=?";            
+            String sql = "DELETE FROM ORDERS WHERE ID=?";            
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, order.getId());
             stmt.execute();
@@ -78,7 +91,7 @@ public class OrderDAOImpl implements OrderDAO {
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM ORDER");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM ORDERS");
             while(rs.next()){
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
@@ -96,7 +109,7 @@ public class OrderDAOImpl implements OrderDAO {
     public Order find(int id) {
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
-            String sql = "SELECT * FROM ORDER WHERE ID=? LIMIT 1";
+            String sql = "SELECT * FROM ORDERS WHERE ID=? LIMIT 1";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             
@@ -119,7 +132,7 @@ public class OrderDAOImpl implements OrderDAO {
         List<Order> orderList = new ArrayList<>();
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
-            String sql = "SELECT * FROM ORDER WHERE ?=?";
+            String sql = "SELECT * FROM ORDERS WHERE ?=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, column);
             stmt.setString(2, value.toString());

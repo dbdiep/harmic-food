@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package org.coolstyles;
 
 import java.io.IOException;
@@ -11,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import java.util.logging.Logger;
 import org.coolstyles.auth.Auth;
 import org.coolstyles.dao.Database;
 import org.coolstyles.dao.DatabaseDAO;
@@ -26,7 +23,7 @@ import org.coolstyles.utils.StringHelper;
  * @author Administrator
  */
 public class CheckOutServlet extends HttpServlet {
-    
+    Logger logger = Logger.getLogger("CheckOutServlet");
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -42,8 +39,7 @@ public class CheckOutServlet extends HttpServlet {
             throws ServletException, IOException {
         Auth.init(request.getSession());
         if(!Auth.isLogin()) response.sendRedirect("LoginServlet");
-        
-        
+        checkOut(request, response);
     }
 
     /**
@@ -69,22 +65,32 @@ public class CheckOutServlet extends HttpServlet {
         String name = StringHelper.randomString(Order.CODE_LENGHT);
         String description = "Order san pham";
         Order order = new Order(0, name, description, Order.PENDING_STATUS);
-        orderDAO.insert(order);
+        order = orderDAO.insert(order);
         
         OrderDetailDAO orderDetailDAO = DatabaseDAO.getInstance().getOrderDetailDAO();
         HttpSession session = request.getSession();
         List<OrderDetailSession> orderDetailSessionList = null;
+        
+        boolean isSuccess = true;
         if(session.getAttribute("cart") != null){
             //Ton tai gio hang
             orderDetailSessionList = (List<OrderDetailSession>) session.getAttribute("cart");
             for (OrderDetailSession ods : orderDetailSessionList) {
-                OrderDetail orderDetail = new OrderDetail(0, ods.getProductId(), ods.getQuantity(), name);
-                orderDetailDAO.insert(orderDetail);
+                OrderDetail orderDetail = new OrderDetail(0, name, order.getId(), ods.getProductId(), ods.getQuantity());
+                logger.info(orderDetail.getOrderName() + ": order name");
+                boolean created = orderDetailDAO.insert(orderDetail);
+                if (!created) {
+                    isSuccess = false;
+                    logger.info("order failed");
+                    break;
+                }
             }
         }
         
         //Xoa gio hang
-        session.removeAttribute("cart");
+        if (isSuccess)
+            session.removeAttribute("cart");
+        
         response.sendRedirect("HomeServlet");
     }
     /**

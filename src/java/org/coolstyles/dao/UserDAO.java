@@ -14,7 +14,7 @@ import org.coolstyles.model.User;
 public interface UserDAO {
     public boolean insert(User user);
     public boolean update(User user);
-    public boolean delete(User user);
+    public boolean delete(int userId);
     
     public List<User> all();
     public User find(int id);

@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.coolstyles.dao.CategoryDAO;
 import org.coolstyles.dao.Database;
 import org.coolstyles.dao.DatabaseDAO;
-import org.coolstyles.model.Category;
 import org.coolstyles.utils.URLSite;
 
 /**

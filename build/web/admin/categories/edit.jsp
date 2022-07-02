@@ -35,11 +35,11 @@
                                 <input type="hidden" name="id" value="${category.id}" />
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input name="name" type="text" class="form-control" placeholder="Enter name">
+                                    <input name="name" value="${category.name}" type="text" class="form-control" placeholder="Enter name">
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <input name="description" type="text" class="form-control" placeholder="Enter description">
+                                    <input name="description" value="${category.description}" type="text" class="form-control" placeholder="Enter description">
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-2">Submit</button>
                             </form>

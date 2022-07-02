@@ -140,7 +140,7 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public boolean login(String username, String password) {
+    public User login(String username, String password) {
       Connection conn = MySQLDriver.getInstance().getConnection();
         try {
             String sql = "SELECT * FROM USERS WHERE USERNAME=? AND PASSWORD=?";
@@ -150,12 +150,15 @@ public class UserDAOImpl implements UserDAO{
           
            ResultSet rs = stmt.executeQuery();
              if(rs.next()){
-               return true;
+                int id = rs.getInt("id");
+                String role = rs.getString("role");
+                
+                return new User(id, username, password, role);
             }
         } catch (SQLException ex) {
-            return false;
+            return null;
         }
-        return false;
+        return null;
     }
 
     @Override

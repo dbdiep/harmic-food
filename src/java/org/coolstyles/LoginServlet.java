@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import org.coolstyles.dao.Database;
 import org.coolstyles.dao.DatabaseDAO;
 import org.coolstyles.dao.UserDAO;
+import org.coolstyles.model.User;
 import org.coolstyles.utils.URLSite;
 
 /**
@@ -58,11 +59,16 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         DatabaseDAO.init(new Database());
         UserDAO userDAO = DatabaseDAO.getInstance().getUserDAO();
-        boolean isLogin = userDAO.login(email, password);
-        if (isLogin) {
+        User user = userDAO.login(email, password);
+        if (user != null) {
             System.out.println("Login successfully.");
             HttpSession session = request.getSession(true);
+            
             session.setAttribute("logged", true);
+            session.setAttribute("user", user);
+            String url = (String) session.getAttribute("urlBack");
+            if (url != null) response.sendRedirect(url);
+            else
             response.sendRedirect(URLSite.HOME_URL);
         } else {
             System.out.println("Login failed.");

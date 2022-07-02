@@ -9,7 +9,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
 import org.coolstyles.dao.CategoryDAO;
 import org.coolstyles.dao.Database;
 import org.coolstyles.dao.DatabaseDAO;

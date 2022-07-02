@@ -80,7 +80,7 @@
                         </div>
                         <div class="col-md-3 header-right p-2">
                             <div class="text-center">
-                                <i class="ms-2 fa fa-user-circle-o" aria-hidden="true"></i>
+                                <a href="LogoutServlet" style="color: black"><i class="ms-2 fa fa-user-circle-o" aria-hidden="true"></i></a>
                                 <i class="ms-2 fa fa-heart-o" aria-hidden="true"></i>
                                 <a href="CartServlet" style="color: black"><i class="ms-2 fa fa-shopping-cart" aria-hidden="true"></i></a>
                             </div>
@@ -127,7 +127,7 @@
                                             <div class="product-image">
                                                 <a href="ProductDetail?id=${product.id}">
                                                     <img src="${product.image}"
-                                                         alt="Product Image">
+                                                         alt="Product Image" style=" width: 250px !important;height: 250px !important;">
                                                 </a>
                                             </div>
                                             <div class="product-content">

@@ -15,7 +15,7 @@ import org.coolstyles.model.Product;
 public interface ProductDAO {
     public boolean insert(Product product);
     public boolean update(Product product);
-    public boolean delete(Product product);
+    public boolean delete(int productId);
     
     public List<Product> all();
     public Product find(int id);

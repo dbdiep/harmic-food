@@ -63,12 +63,12 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public boolean delete(Product product) {
+    public boolean delete(int productId) {
        Connection conn = MySQLDriver.getInstance().getConnection();
         try {
             String sql = "DELETE FROM PRODUCTS WHERE ID=?";            
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, product.getId());
+            stmt.setInt(1, productId);
             stmt.execute();
         } catch (SQLException ex) {
             return false;

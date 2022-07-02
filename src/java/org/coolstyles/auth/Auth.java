@@ -27,4 +27,9 @@ public class Auth {
     public static boolean isLogin(){
         return user() == null ? false : true;
     }
+    
+    public static boolean isAdmin(){
+        if(user() == null) return false;
+        return user().role.equals("admin");
+    }
 }

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,8 +80,8 @@
                         </div>
                         <div class="col-md-3 header-right p-2">
                             <div class="text-center">
-                                <i class="ms-2 fa fa-user-circle-o" aria-hidden="true"></i>
-                                <i class="ms-2 fa fa-heart-o" aria-hidden="true"></i>
+                               <a href="LogoutServlet" style="color: black"><i class="ms-2 fa fa-user-circle-o" aria-hidden="true"></i></a>
+                               <i class="ms-2 fa fa-heart-o" aria-hidden="true"></i>
                                <a href="CartServlet" style="color: black"><i class="ms-2 fa fa-shopping-cart" aria-hidden="true"></i></a>
                             </div>
                         </div>
@@ -112,7 +113,7 @@
         <div class="container category p-2">
             <span>Category</span>
             <span class="ms-1">></span>
-            <span class="ms-1">Food</span>
+            <span class="ms-1">${category.name}</span>
         </div>
     </div>
     <div class="product-area section-space-top-100">
@@ -128,7 +129,7 @@
                                             <div class="product-image">
                                                 <a href="product-details.html">
                                                     <img src="${product.image}"
-                                                         alt="Product Image">
+                                                         alt="Product Image" style=" width: 250px !important;height: 250px !important;">
                                                 </a>
                                             </div>
                                             <div class="product-content">
@@ -137,7 +138,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </foreach>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>

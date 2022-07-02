@@ -10,9 +10,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.coolstyles.dao.CategoryDAO;
 import org.coolstyles.dao.Database;
 import org.coolstyles.dao.DatabaseDAO;
 import org.coolstyles.dao.ProductDAO;
+import org.coolstyles.model.Category;
 import org.coolstyles.model.Product;
 
 /**
@@ -37,7 +39,10 @@ public class HomeServlet extends HttpServlet {
         DatabaseDAO.init(new Database());
         ProductDAO productDAO = DatabaseDAO.getInstance().getProductDAO();
         List<Product> productList = productDAO.all();
+        CategoryDAO categoryDAO =  DatabaseDAO.getInstance().getCategoryDAO();
+        List<Category> categoryList = categoryDAO.all();
         
+        request.setAttribute("categoryList", categoryList);
         request.setAttribute("productList", productList);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }

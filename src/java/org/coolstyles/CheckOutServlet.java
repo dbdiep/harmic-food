@@ -17,6 +17,7 @@ import org.coolstyles.model.Order;
 import org.coolstyles.model.OrderDetail;
 import org.coolstyles.model.OrderDetailSession;
 import org.coolstyles.utils.StringHelper;
+import org.coolstyles.utils.URLSite;
 
 /**
  *
@@ -37,8 +38,11 @@ public class CheckOutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        session.setAttribute("urlBack", URLSite.HOME_URL);
         Auth.init(request.getSession());
         if(!Auth.isLogin()) response.sendRedirect("LoginServlet");
+        else
         checkOut(request, response);
     }
 
@@ -53,6 +57,7 @@ public class CheckOutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
     }
 
     /**
@@ -77,7 +82,6 @@ public class CheckOutServlet extends HttpServlet {
             orderDetailSessionList = (List<OrderDetailSession>) session.getAttribute("cart");
             for (OrderDetailSession ods : orderDetailSessionList) {
                 OrderDetail orderDetail = new OrderDetail(0, name, order.getId(), ods.getProductId(), ods.getQuantity());
-                logger.info(orderDetail.getOrderName() + ": order name");
                 boolean created = orderDetailDAO.insert(orderDetail);
                 if (!created) {
                     isSuccess = false;
@@ -87,11 +91,11 @@ public class CheckOutServlet extends HttpServlet {
             }
         }
         
+        response.sendRedirect("HomeServlet");
+        
         //Xoa gio hang
         if (isSuccess)
             session.removeAttribute("cart");
-        
-        response.sendRedirect("HomeServlet");
     }
     /**
      * Returns a short description of the servlet.

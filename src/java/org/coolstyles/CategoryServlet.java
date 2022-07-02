@@ -4,15 +4,18 @@
  */
 package org.coolstyles;
 
+import com.mysql.cj.util.StringUtils;
 import java.io.IOException;
 import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.coolstyles.dao.CategoryDAO;
 import org.coolstyles.dao.Database;
 import org.coolstyles.dao.DatabaseDAO;
 import org.coolstyles.dao.ProductDAO;
+import org.coolstyles.model.Category;
 import org.coolstyles.model.Product;
 
 /**
@@ -33,13 +36,16 @@ public class CategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = String.valueOf(request.getParameter("q"));
-        int categoryId = Integer.parseInt(request.getParameter("q"));
-         
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+ 
         DatabaseDAO.init(new Database());
         ProductDAO productDAO = DatabaseDAO.getInstance().getProductDAO();
-        List<Product> productList = productDAO.findByNameAndCategoryId(name, categoryId);
-        
+        List<Product> productList = productDAO.findByCategoryId(categoryId);
+         
+        CategoryDAO categoryDAO =  DatabaseDAO.getInstance().getCategoryDAO();
+        Category category = categoryDAO.find(categoryId);
+    
+        request.setAttribute("category", category);
         request.setAttribute("productList", productList);
         request.getRequestDispatcher("category.jsp").forward(request, response);
     }

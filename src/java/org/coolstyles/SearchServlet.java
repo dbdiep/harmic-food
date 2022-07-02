@@ -35,9 +35,9 @@ public class SearchServlet extends HttpServlet {
             throws ServletException, IOException {
         String name = String.valueOf(request.getParameter("name"));
         int categoryId = 0;
-//        if (request.getParameter("categoryId") != null) {
-//            categoryId = Integer.parseInt(request.getParameter("categoryId"));
-//        }
+        if (request.getParameter("categoryId") != null) {
+            categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        }
         
         DatabaseDAO.init(new Database());
         ProductDAO productDAO = DatabaseDAO.getInstance().getProductDAO();

@@ -9,11 +9,14 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import org.coolstyles.auth.Auth;
 import org.coolstyles.dao.Database;
 import org.coolstyles.dao.DatabaseDAO;
 import org.coolstyles.dao.UserDAO;
 import org.coolstyles.model.User;
+import org.coolstyles.utils.URLSite;
 
 /**
  *
@@ -33,12 +36,18 @@ public class IndexUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DatabaseDAO.init(new Database());
-        UserDAO userDAO = DatabaseDAO.getInstance().getUserDAO();
-        
-        List<User> userList = userDAO.all();
-        request.setAttribute("userList", userList);
-        request.getRequestDispatcher("./admin/users/index.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        session.setAttribute("urlBack", URLSite.ADMIN_INDEX_USER_URL);
+        Auth.init(request.getSession());
+        if(!Auth.isAdmin()) response.sendRedirect("LoginServlet");
+        else {
+            DatabaseDAO.init(new Database());
+            UserDAO userDAO = DatabaseDAO.getInstance().getUserDAO();
+
+            List<User> userList = userDAO.all();
+            request.setAttribute("userList", userList);
+            request.getRequestDispatcher("./admin/users/index.jsp").forward(request, response);
+        }
     }
 
     /**

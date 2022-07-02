@@ -27,28 +27,31 @@ public class OrderDAOImpl implements OrderDAO {
     
     @Override
     public Order insert(Order order) {
-        Connection conn = MySQLDriver.getInstance().getConnection();
+       Connection conn = MySQLDriver.getInstance().getConnection();
         try {
-            String sql = "INSERT INTO ORDERS VALUES(null,?,?,?)";            
+            String sql = "INSERT INTO Orders VALUES(null,?,?,?)";            
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, order.getName());
             stmt.setString(2, order.getDescription());
             stmt.setString(3, order.getStatus());
             stmt.execute();
             
-            String sqlOrder = "SELECT * FROM ORDERS WHERE ORDERS_NAME=? LIMIT 1";
-            PreparedStatement stmtOrder = conn.prepareStatement(sqlOrder);
-            ResultSet rs = stmtOrder.executeQuery();
+            //Query select order inserted.
+            sql = "SELECT * FROM Orders WHERE name=? LIMIT 1";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, order.getName());
+            
+            ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                String description = rs.getString("description");
+                String des = rs.getString("description");
                 String status = rs.getString("status");
                 
-                return new Order(id, name, description, status);
+                return new Order(id, name, des, status);
             }
+            
         } catch (SQLException ex) {
-            Logger.getLogger("OrderDAO").info(ex.toString());
             return null;
         }
         return null;
@@ -72,14 +75,16 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public boolean delete(Order order) {
+    public boolean delete(int orderId) {
+        Logger.getLogger("OrderDAO").info(orderId + ": order delete");
        Connection conn = MySQLDriver.getInstance().getConnection();
         try {
             String sql = "DELETE FROM ORDERS WHERE ID=?";            
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, order.getId());
+            stmt.setInt(1, orderId);
             stmt.execute();
         } catch (SQLException ex) {
+            Logger.getLogger("OrderDAO").info(ex.toString());
             return false;
         }
         return true;

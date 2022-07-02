@@ -78,7 +78,7 @@
                             </div>
                             <div class="col-md-3 header-right p-2">
                                 <div class="text-center">
-                                    <i class="ms-2 fa fa-user-circle-o" aria-hidden="true"></i>
+                                    <a href="LogoutServlet" style="color: black"><i class="ms-2 fa fa-user-circle-o" aria-hidden="true"></i></a>
                                     <i class="ms-2 fa fa-heart-o" aria-hidden="true"></i>
                                     <a href="CartServlet" style="color: black"><i class="ms-2 fa fa-shopping-cart" aria-hidden="true"></i></a>
                                 </div>
@@ -114,29 +114,29 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="product_remove">Remove</th>
-                                        <th class="cart-product-name">Product</th>
-                                        <th class="product-price">Unit Price</th>
-                                        <th class="product-quantity">Quantity</th>
-                                        <th class="product-subtotal">Total</th>        
+                                        <th class="product-remove" style="text-align: left;">Remove</th>
+                                        <th class="cart-product-name" style="text-align: left;">Product</th>
+                                        <th class="product-price" style="text-align: left;">Unit Price</th>
+                                        <th class="product-quantity" style="text-align: left;">Quantity</th>
+                                        <th class="product-subtotal" style="text-align: left;">Total</th>        
                                     </tr>
                                 </thead>
                                 <tbody>                                    
                                 <c:forEach items="${orderDetailSesionList}" var="orderDetail">
                                         <tr>
-                                            <td class="product_remove">
+                                            <td class="product-remove">
                                                 <form action="OrderServlet" method="post">
                                                     <input type="hidden" name="action" value="delete">
-                                                    <input type="hidden" name="productId" value="1">
+                                                    <input type="hidden" name="productId" value="${orderDetail.productId}">
                                                     <button type="submit">Remove</button>
                                                 </form>
                                             </td>
-                                            <td class="product-name"><a href="javascript:void(0)">${orderDetail.productName}</a></td>
+                                            <td class="cart-product-name"><a href="javascript:void(0)">${orderDetail.productName}</a></td>
                                             <td class="product-price"><span class="amount">${orderDetail.price}</span></td>
                                             <td class="quantity">
                                                 <div class="cart-plus-minus">
                                                     <input class="cart-plus-minus-box" value="${orderDetail.quantity}" type="text">
-                                                <div class="dec qtybutton"><i class="fa fa-minus"></i></div><div class="inc qtybutton"><i class="fa fa-plus"></i></div></div>
+                                                </div>
                                             </td>
                                             <td class="product-subtotal"><span class="amount">${(orderDetail.quantity * orderDetail.price)}</span></td>
                                         </tr>

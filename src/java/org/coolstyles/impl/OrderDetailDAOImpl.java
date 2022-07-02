@@ -62,12 +62,12 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     }
 
     @Override
-    public boolean delete(OrderDetail orderDetail) {
+    public boolean delete(int orderDetailId) {
         Connection conn = MySQLDriver.getInstance().getConnection();
         try {
             String sql = "DELETE FROM ORDER_DETAILS WHERE ID=?";            
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, orderDetail.getId());
+            stmt.setInt(1, orderDetailId);
             stmt.execute();
         } catch (SQLException ex) {
             return false;
@@ -84,7 +84,7 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
             ResultSet rs = stmt.executeQuery("SELECT * FROM ORDER_DETAILS");
             while(rs.next()){
                 int id = rs.getInt("id");
-                int productId = rs.getInt("product_id");
+                int productId = rs.getInt("products_id");
                 int amount = rs.getInt("amount");
                 String orderName = rs.getString("orders_name");
                 int orderId = rs.getInt("orders_id");
@@ -106,7 +106,7 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
             
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
-                int productId = rs.getInt("product_id");
+                int productId = rs.getInt("products_id");
                 int amount = rs.getInt("amount");
                 String orderName = rs.getString("orders_name");
                 int orderId = rs.getInt("orders_id");
@@ -131,7 +131,7 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 int id = rs.getInt("id");
-                int productId = rs.getInt("product_id");
+                int productId = rs.getInt("products_id");
                 int amount = rs.getInt("amount");
                 String orderName = rs.getString("orders_name");
                 int orderId = rs.getInt("orders_id");
@@ -142,8 +142,28 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
         }
         return orderDetailList;
     }
+
+    @Override
+    public List<OrderDetail> findByOrderName(String orderName) {
+        List<OrderDetail> orderDetailList = new ArrayList<>();
+        Connection conn = MySQLDriver.getInstance().getConnection();
+        try {
+            String sql = "SELECT * FROM ORDER_DETAILS WHERE ORDERS_NAME=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, orderName);
+            
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                int productId = rs.getInt("products_id");
+                int amount = rs.getInt("amount");
+                int orderId = rs.getInt("orders_id");
+                orderDetailList.add(new OrderDetail(id, orderName, orderId, productId, amount));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CRUDServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return orderDetailList;
+    }
     
 }
-
-
-

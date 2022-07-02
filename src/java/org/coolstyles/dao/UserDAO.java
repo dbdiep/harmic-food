@@ -19,6 +19,6 @@ public interface UserDAO {
     public List<User> all();
     public User find(int id);
     public List<User> findByProperty(String column, Object value);
-    public boolean login(String username, String password);
+    public User login(String username, String password);
     public boolean register(String username, String password);
 }

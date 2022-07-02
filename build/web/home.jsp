@@ -80,7 +80,7 @@
                         </div>
                         <div class="col-md-3 header-right p-2">
                             <div class="text-center">
-                                <i class="ms-2 fa fa-user-circle-o" aria-hidden="true"></i>
+                                <a href="LogoutServlet" style="color: black"><i class="ms-2 fa fa-user-circle-o" aria-hidden="true"></i></a>
                                 <i class="ms-2 fa fa-heart-o" aria-hidden="true"></i>
                                 <a href="CartServlet" style="color: black"><i class="ms-2 fa fa-shopping-cart" aria-hidden="true"></i></a>
                             </div>
@@ -115,11 +115,13 @@
                 <div class="col-12">
                     <ul class="nav product-tab-nav mb-5">
                         <li class="nav-item">All Items</li>
-                        <li class="nav-item">Fresh Fruits</li>
-                        <li class="nav-item">Fresh Fruits</li>
-                        <li class="nav-item">Vegetable</li>
-                        <li class="nav-item">Fish & Meat</li>
-                        <li class="nav-item">Wheat</li>
+                        <c:forEach items="${categoryList}" var="category">
+                         <li class="nav-item">
+                             <a href="CategoryServlet?categoryId=${category.id}">
+                                 ${category.name}
+                             </a>
+                         </li>
+                        </c:forEach>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="all-items">
@@ -130,7 +132,7 @@
                                             <div class="product-image">
                                                 <a href="ProductDetail?id=${product.id}">
                                                     <img src="${product.image}"
-                                                         alt="Product Image">
+                                                         alt="Product Image" style=" width: 250px !important;height: 250px !important;">
                                                 </a>
                                             </div>
                                             <div class="product-content">

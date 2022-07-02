@@ -76,6 +76,42 @@
         <servlet-name>DeleteCategoryServlet</servlet-name>
         <servlet-class>org.coolstyles.admin.category.DeleteCategoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>IndexProductServlet</servlet-name>
+        <servlet-class>org.coolstyles.admin.product.IndexProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IndexOrderServlet</servlet-name>
+        <servlet-class>org.coolstyles.admin.order.IndexOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditOrderServlet</servlet-name>
+        <servlet-class>org.coolstyles.admin.order.EditOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteOrderServlet</servlet-name>
+        <servlet-class>org.coolstyles.admin.order.DeleteOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateOrderServlet</servlet-name>
+        <servlet-class>org.coolstyles.admin.product.CreateProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateProductServlet</servlet-name>
+        <servlet-class>org.coolstyles.admin.product.CreateProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditProductServlet</servlet-name>
+        <servlet-class>org.coolstyles.admin.product.EditProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteProductServlet</servlet-name>
+        <servlet-class>org.coolstyles.admin.product.DeleteProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowOrderServlet</servlet-name>
+        <servlet-class>org.coolstyles.admin.order.ShowOrderServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/HomeServlet</url-pattern>
@@ -151,6 +187,42 @@
     <servlet-mapping>
         <servlet-name>DeleteCategoryServlet</servlet-name>
         <url-pattern>/DeleteCategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndexProductServlet</servlet-name>
+        <url-pattern>/IndexProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndexOrderServlet</servlet-name>
+        <url-pattern>/IndexOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditOrderServlet</servlet-name>
+        <url-pattern>/EditOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteOrderServlet</servlet-name>
+        <url-pattern>/DeleteOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateOrderServlet</servlet-name>
+        <url-pattern>/CreateOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateProductServlet</servlet-name>
+        <url-pattern>/CreateProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProductServlet</servlet-name>
+        <url-pattern>/EditProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProductServlet</servlet-name>
+        <url-pattern>/DeleteProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowOrderServlet</servlet-name>
+        <url-pattern>/ShowOrderServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

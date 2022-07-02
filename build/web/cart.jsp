@@ -149,7 +149,7 @@
                                 <div class="cart-page-total">
                                     <h2>Cart totals</h2>
                                         <ul>
-                                            <li>Total <span></span></li>
+                                            <li>Total <span>${total}</span></li>
                                         </ul>
                                     <a href="CheckOutServlet">Proceed to checkout</a>
                                 </div>

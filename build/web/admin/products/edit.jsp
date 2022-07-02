@@ -36,8 +36,9 @@
                                 <div class="form-group">
                                     <label for="cars">Choose a category:</label>
                                     <select name="category" id="category">
+                                        <option hidden="true" value="${categorySelected.id}" disabled="true" selected="true">${categorySelected.name}</option>
                                         <c:forEach items="${categoryList}" var="category">
-                                            <option value="${categoryId}">${category.name}</option>
+                                            <option value="${category.id}">${category.name}</option>
                                         </c:forEach>
                                     </select>
                                 </div>

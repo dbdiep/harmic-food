@@ -47,8 +47,15 @@ public class EditProductServlet extends HttpServlet {
         ProductDAO productDAO = DatabaseDAO.getInstance().getProductDAO();
         Product product = productDAO.find(productId);
         
+        Category category = null;
+        for (Category cat: categoryList) {
+            if(cat.getId() == product.getCategoryId()) {
+                category = cat;
+            } 
+        }
+        
         request.setAttribute("categoryList", categoryList);
-        request.setAttribute("categoryId", product.getCategoryId());
+        request.setAttribute("categorySelected", category);
         request.setAttribute("product", product);
         request.getRequestDispatcher("./admin/products/edit.jsp").forward(request, response);
     }

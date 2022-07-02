@@ -36,12 +36,17 @@ public class CartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         List<OrderDetailSession> orderDetailSesionList = null;
         
+        double total = 0D;
         if(session.getAttribute("cart") != null){
             orderDetailSesionList = (List <OrderDetailSession>)session.getAttribute("cart");
+            for (OrderDetailSession orderDetailSession: orderDetailSesionList) {
+                total += orderDetailSession.getPrice()*orderDetailSession.getQuantity();
+            }
         }else{
             orderDetailSesionList = new ArrayList<OrderDetailSession>();
         }
         
+        request.setAttribute("total", total);
         request.setAttribute("orderDetailSesionList", orderDetailSesionList);
         request.getRequestDispatcher("cart.jsp").forward(request, response);
     }

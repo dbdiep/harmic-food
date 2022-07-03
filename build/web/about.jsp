@@ -1,6 +1,6 @@
 <%-- 
-    Document   : home
-    Created on : Jun 6, 2022, 6:45:30 PM
+    Document   : about
+    Created on : Jul 3, 2022, 9:18:16 PM
     Author     : Administrator
 --%>
 
@@ -39,7 +39,7 @@
                         <ul class="dropdown-wrap text-matterhorn">
                             <li>
                                 Call Us
-                                <a href="index.html">3965410</a>
+                                <a href="HomeServlet">3965410</a>
                             </li>
                         </ul>
                     </div>
@@ -94,7 +94,8 @@
         <div class="container">
             <div class="row align-items-center p-2">
                 <div class="col-12">
-                    <div class="main-nav d-flex">
+                    <div class="main-menu">
+                        <div class="main-nav d-flex">
                             <div class="m-r-20">
                                 <a href="HomeServlet" style="color: white">HOME</a>
                             </div>
@@ -108,49 +109,19 @@
                                 <a href="ContactServlet" style="color: white">CONTACT</a>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
-    <div class="product-area section-space-top-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <ul class="nav product-tab-nav mb-5">
-                        <li class="nav-item">All Items</li>
-                        <c:forEach items="${categoryList}" var="category">
-                         <li class="nav-item">
-                             <a href="CategoryServlet?categoryId=${category.id}">
-                                 ${category.name}
-                             </a>
-                         </li>
-                        </c:forEach>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="all-items">
-                            <div class="product-item-wrap row">
-                                <c:forEach items="${productList}" var="product">
-                                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a href="ProductDetail?id=${product.id}">
-                                                    <img src="${product.image}"
-                                                         alt="Product Image" style=" width: 250px !important;height: 250px !important;">
-                                                </a>
-                                            </div>
-                                            <div class="product-content">
-                                                <a class="product-name" href="ProductDetail?id=${product.id}">${product.name}</a>
-                                                <div>$ ${product.price}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </c:forEach>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="product-area section-space-top-100 row">
+        <div class="col-md-6">
+            <img style="height: 400px; width: 600px;" src="https://propzy.vn/tin-tuc/wp-content/uploads/2020/08/an-tam-voi-15-cua-hang-cung-cap-rau-sach-tai-tphcm-orfarm-1.png" alt="Logo">
+        </div>
+        <div class="col-md-6">
+            <h3>BEST ORGANIC SHOP</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimd veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
         </div>
     </div>
     <div class="footer">
@@ -161,7 +132,8 @@
                         <a href="index.html" class="header-logo">
                             <img src="https://htmldemo.net/harmic/harmic/assets/images/logo/dark.png" alt="Header Logo">
                         </a>
-                        <p class="mt-2">Lorem ipsum dolor sit amet, consectet adipi elit, sed do eius tempor incididun ut labore gthydolore.</p>
+                        <p class="mt-2">Lorem ipsum dolor sit amet, consectet adipi elit, sed do eius tempor incididun
+                            ut labore gthydolore.</p>
                         <p><i class="fa fa-map-marker"></i> 184 Main Rd E, St Albans VIC 3021,</p>
                         <p><i class="fa fa-envelope"></i> info@example.com</p>
                     </div>
@@ -216,9 +188,12 @@
                         <p class="mt-2">Lorem ipsum dolor sit amet, consectet adipi elit, sed do eius tempor.</p>
                         <div>
                             <form action="#">
-                                <input class="input-field form-control" type="email" autocomplete="off" placeholder="Your Email">
+                                <input class="input-field form-control" type="email" autocomplete="off"
+                                    placeholder="Your Email">
                                 <div class="pt-3">
-                                    <button class="btn btn-custom-size btn-primary btn-secondary-hover rounded-0 form-control width-button">SEND MAIL</button>
+                                    <button
+                                        class="btn btn-custom-size btn-primary btn-secondary-hover rounded-0 form-control width-button">SEND
+                                        MAIL</button>
                                 </div>
                             </form>
                         </div>

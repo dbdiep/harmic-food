@@ -94,16 +94,20 @@
         <div class="container">
             <div class="row align-items-center p-2">
                 <div class="col-12">
-                    <div class="main-menu">
-                        <div class="main-nav d-flex">
-                            <div class="m-r-20">HOME</div>
-                            <div class="m-r-20">ABOUT</div>
+                    <div class="main-nav d-flex">
+                            <div class="m-r-20">
+                                <a href="HomeServlet" style="color: white">HOME</a>
+                            </div>
+                            <div class="m-r-20">
+                                <a href="AboutUsServlet" style="color: white">ABOUT</a>
+                            </div>
                             <div class="m-r-20">SHOP</div>
                             <div class="m-r-20">PAGES</div>
                             <div class="m-r-20">BLOG</div>
-                            <div class="m-r-20">CONTACT</div>
+                            <div class="m-r-20">
+                                <a href="ContactServlet" style="color: white">CONTACT</a>
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
 
